@@ -1,7 +1,6 @@
 // Importation des Modules.
 const { app, ipcMain, BrowserWindow} = require("electron");
 const path = require("path");
-const DiscordRichPresence = require('discord-rich-presence')('872877401279987812');
 const { Client, Authenticator } = require("minecraft-launcher-core");
 const Launcher = new Client();
 const fs = require("fs");
@@ -45,12 +44,6 @@ function createWindow() {
    setTimeout(ShowApp, 2900);
   });
 };
-// Activation de la Discord Rich Presence.
-DiscordRichPresence.updatePresence({
-  state: 'En Ligne',
-  largeImageKey: 'large',
-  instance: true,
-  });
   console.log("- DiscordRichPresence - Enabled")
   app.whenReady().then(() => {
     createWindow();
@@ -206,6 +199,6 @@ ipcMain.on('logout', (evt, user) => {
 ipcMain.on('OpenSettingsPage', (evt, user) => {
   mainWindow.loadFile(path.join(__dirname, 'assets/app/html/settings.html'));
 });
-ipcMain.on('SavedSettings', (evt, user) => {
-  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/login.html'));
+ipcMain.on('SaveSettings', (evt, data) => {
+  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html'));
 });

@@ -27,5 +27,13 @@
   },
   "build": {
     "appId": "fr.lacarottebleue.spectrelauncher"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L-C-B/SpectreLauncher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/L-C-B/SpectreLauncher/issues"
+  },
+  "homepage": "https://github.com/L-C-B/SpectreLauncher#readme"
 }

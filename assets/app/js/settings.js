@@ -14,10 +14,19 @@ function getVersion() {
     let versionselect = versionlist.options[versionlist.selectedIndex].text
     localStorage.setItem('version', versionselect);
 };
-// Save.
-document.getElementById("save").addEventListener("click", () => {
-    ipc.send("SavedSettings");
+function saveOptions() {
+  iziToast.success({
+      title: 'Succès !',
+      message: 'Les paramètres sont sauvegardés.',
   });
+  ipc.send("SaveSettings", {
+      min: '1G',
+      max: localStorage.getItem("ram"),
+      width: '854',
+      height: '480',
+      version: localStorage.getItem("version"),
+  });
+};
 // Title Bar.
 let bar = new custombar.Titlebar({
   menu: null,
