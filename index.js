@@ -44,7 +44,6 @@ function createWindow() {
    setTimeout(ShowApp, 2900);
   });
 };
-  console.log("- DiscordRichPresence - Enabled")
   app.whenReady().then(() => {
     createWindow();
   app.on("activate", function () {
@@ -200,5 +199,5 @@ ipcMain.on('OpenSettingsPage', (evt, user) => {
   mainWindow.loadFile(path.join(__dirname, 'assets/app/html/settings.html'));
 });
 ipcMain.on('SaveSettings', (evt, data) => {
-  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html'));
+  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/login.html'));
 });
