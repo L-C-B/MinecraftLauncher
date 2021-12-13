@@ -14,7 +14,7 @@
   "author": "LaCarotteBleue",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.0.0",
+    "electron": "^12.2.3",
     "electron-builder": "^22.7.0"
   },
   "dependencies": {
@@ -22,7 +22,7 @@
     "custom-electron-titlebar": "^3.2.6",
     "discord-rich-presence": "^0.0.8",
     "izitoast": "^1.4.0",
-    "minecraft-launcher-core": "^3.14.1",
+    "minecraft-launcher-core": "^3.16.10",
     "msmc": "^2.2.0"
   },
   "build": {

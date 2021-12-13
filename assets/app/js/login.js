@@ -14,7 +14,7 @@ let bar = new custombar.Titlebar({
   backgroundColor: custombar.Color.TRANSPARENT,
   maximizable: false
 });
-
+document.querySelectorAll(".window-maximize")[0].parentElement.remove()
 // Lorsque l'utilisateur clique sur le bouton Microsoft.
 LoginMicrosoft.addEventListener("click", () => {
   LoginMojang.classList.add('buttonLoading');
