@@ -20,3 +20,4 @@ let bar = new custombar.Titlebar({
   backgroundColor: custombar.Color.TRANSPARENT,
   maximizable: false
 });
+document.querySelectorAll(".window-maximize")[0].parentElement.remove()

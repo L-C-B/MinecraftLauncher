@@ -14,6 +14,7 @@ let bar = new custombar.Titlebar({
   backgroundColor: custombar.Color.fromHex("#161616"),
   maximizable: false
 });
+document.querySelectorAll(".window-maximize")[0].parentElement.remove()
 
 // Lorsque l'utilisateur clique sur le bouton de Déconnexion.
 deco.addEventListener("click", () => {
