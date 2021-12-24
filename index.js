@@ -10,7 +10,7 @@ const fetch = require("node-fetch");
 
 // Création de la fenêtre principale.
 let mainWindow;
-let appdata = app.getPath("appData")
+let AppData = app.getPath("appData")
 function ShowApp() {
   mainWindow.show()
   SplashStart.close();
@@ -100,18 +100,24 @@ ipcMain.on('LoginMicrosoft', (evt, data) => {
   });
 });
 // Quand le jeu se lance.
-ipcMain.on('Play', (evt, user) => {
+ipcMain.on('Play', (evt, data) => {
+  if(!data.version) {
+    data.version = "1.14.4"; // Version par défaut.
+  };
+  if(!data.ram) {
+    data.ram = "1G";
+  };
   let Options = {
     clientPackage: null,
-    authorization: msmc.getMCLC().getAuth(user) || Authenticator.refreshAuth(user.access_token, user.client_token), // Microsoft & Mojang
-    root: `${appdata}/.spectrelauncher/`,
+    authorization: msmc.getMCLC().getAuth(data.user) || Authenticator.refreshAuth(data.user.access_token, data.user.client_token), // Microsoft & Mojang
+    root: `${AppData}/.spectrelauncher/`,
     version: {
-      number: "1.14.4",
+      number: data.version,
       type: "release"
     },
     memory: {
-      max: "1G",
-      min: "1G",
+      max: data.ram,
+      min: data.ram,
     },
     window: {
       width: "854",
@@ -133,10 +139,3 @@ ipcMain.on('logout', (evt, user) => {
       evt.sender.send('err', 'Erreur lors de la déconnexion');
     });
   });
-
-ipcMain.on('OpenSettingsPage', (evt, user) => {
-  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/settings.html'));
-});
-ipcMain.on('SaveSettings', (evt, data) => {
-  mainWindow.loadFile(path.join(__dirname, 'assets/app/html/login.html'));
-});

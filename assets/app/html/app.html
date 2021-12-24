@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/app.css" />
     <link rel="stylesheet" href="../css/toast.css" />
+    <link rel="stylesheet" href="../css/settings.css" />
     <script src="../scripts/toast.js"></script>
   </head>
   <body>
@@ -16,8 +17,39 @@
       <img src="../../images/background.png" id="background"/>
       <h1 class="settingsText">・</h1>
       <button id="options" class="button"><span class="buttonText">OPTIONS</span></button>
-</div>
+    </div>
     <img src="../../images/logo.png" id="logo"/>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="settings-box">
+          <button class="button" id="save">Save</button>
+          <img class="logo" src="../../images/logo.png">
+          <p><h1 class="ramtext">Ram & Version</h1></p>
+          <select name="Select" type="Select" id="ram" onchange="getRam()">
+            <option value="1G">1G</option>
+            <option value="2G">2G</option>
+            <option value="3G">3G</option>
+            <option value="4G">4G</option>
+            <option value="5G">5G</option>
+            <option value="6G">6G</option>
+            <option value="7G">7G</option>
+            <option value="8G">8G</option>
+          </select>
+          <select name="Select" type="Select" id="version" onchange="getVersion()">
+            <option>1.7.10</option>
+            <option>1.8.9</option>
+            <option>1.9.4</option>
+            <option>1.12.2</option>
+            <option>1.13.2</option>
+            <option>1.14.4</option>
+            <option>1.15.2</option>
+            <option>1.16.5</option>
+            <option>1.17.1</option>
+            <option>1.18.1</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <script src="../js/app.js"></script>
   </body>
 </html>

@@ -18,11 +18,10 @@
     "electron-builder": "^22.7.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
     "custom-electron-titlebar": "^3.2.6",
     "izitoast": "^1.4.0",
-    "msmc": "^2.0.1",
-    "minecraft-launcher-core": "^3.16.10"
+    "minecraft-launcher-core": "^3.16.10",
+    "msmc": "^2.0.1"
   },
   "build": {
     "appId": "fr.lacarottebleue.spectrelauncher"
