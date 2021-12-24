@@ -2,17 +2,17 @@
 
 ## Introduction
 
-Welcome to the **GitHub** of my ** Launcher **.
-I built this Launcher with [Electron] (https://www.electronjs.org/). The current version of my Launcher is **v3.1.2**.
+Bienvenue sur le **GitHub** de mon Launcher.
+J'ai conçu ce Launcher avec [Electron](https://www.electronjs.org/). La version actuelle du Launcher est la **v3.1.2**.
 
 ## Usage
 
-This **GitHub** is intended to help people who are currently trying to create their own Launcher.
-If you want more information about the launcher, contact me on [Discord] (https://discord.gg/) `LaCarotteBleue # 8874`.
+Ce **GitHub** a pour but d'aider les personnes qui sont actuellement en train d'essayer de créer leurs propres Launcher.
+Si vous voulez en savoir plus, contactez-moi sur [Discord](https://discord.gg/) `LaCarotteBleue#8874`.
 
 ## Développement 
 
-*To start developing & modifying the Launcher, follow these steps:*
+*Pour commencer à développer & modifier le Launcher, suivez ces étapes :*
 
 ```
 > git clone https://github.com/L-C-B/SpectreLauncher.git

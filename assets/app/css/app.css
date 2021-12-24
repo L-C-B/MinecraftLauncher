@@ -8,6 +8,14 @@ body {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
 }
+@keyframes fadeInOpacity {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
 .main-box {
   position: relative;
   left: 246px;
@@ -289,13 +297,5 @@ select#version {
   }
   to {
     transform: rotate(1turn);
-  }
-}
-@keyframes fadeInOpacity {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
   }
 }

@@ -1,9 +1,9 @@
-// Import of Modules.
+// Importation des Modules.
 const custombar = require("custom-electron-titlebar");
 const ipc = require("electron").ipcRenderer;
 const iziToast = require('izitoast');
 
-// Global Variables.
+// Variables Globales.
 let inputPseudo = document.getElementById("pseudo");
 let inputMdp = document.getElementById("mdp");
 let LoginMojang = document.getElementById("LoginMojang");
@@ -15,12 +15,12 @@ let bar = new custombar.Titlebar({
   maximizable: false
 });
 document.querySelectorAll(".window-maximize")[0].parentElement.remove()
-// When the user clicks the Microsoft button.
+// Lorsque l'utilisateur clique sur le bouton Microsoft.
 LoginMicrosoft.addEventListener("click", () => {
   LoginMojang.classList.add('buttonLoading');
   ipc.send("LoginMicrosoft");
 });
-// When the user tries to login with the Mojang account.
+// Lorsque l'utilisateur tente de se connecter avec Mojang.
 LoginMojang.addEventListener("click",() => {
   LoginMojang.classList.add('buttonLoading');
   if(inputPseudo.value && inputMdp.value) {
@@ -53,7 +53,7 @@ ipc.on("err", (event, errorMessage) => {
     }, 1200);
     LoginMojang.disabled = false;
   });
-  if(localStorage.getItem('MojangTokens')) {
-    // Login Mojang with tokens.
+  if(localStorage.getItem('mojangTokens')) {
+    // Login Mojang avec les tokens.
     ipc.send('LoginMojangToken', JSON.parse(localStorage.getItem('user')));
   };

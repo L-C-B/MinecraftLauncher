@@ -1,4 +1,4 @@
-// Import of Modules.
+// Importation des Modules.
 const { app, ipcMain, BrowserWindow} = require("electron");
 const path = require("path");
 const { Client, Authenticator } = require("minecraft-launcher-core");
@@ -8,8 +8,13 @@ const msmc = require("msmc");
 const ipc = require("electron").ipcRenderer;
 const fetch = require("node-fetch");
 
-// Building the mainWindow.
+// Création de la fenêtre principale.
 let mainWindow;
+let AppData = app.getPath("appData")
+function ShowApp() {
+  mainWindow.show()
+  splash.close();
+};
 function createWindow() {
   mainWindow = new BrowserWindow({
     title: "Minecraft Launcher",
@@ -29,23 +34,12 @@ function createWindow() {
     },
   });
   mainWindow.loadFile(path.join(__dirname, "assets/app/html/login.html")).then(() => {
-    console.log("- The mainWindow has been created");
+    console.log("- La mainWindow vient de se contruire.");
   });
-  // Building the SplashScreen.
-  function ShowApp() {
-    mainWindow.show()
-    splash.close();
-  };
-  splash = new BrowserWindow({
-    width: 300, 
-    icon: path.join(__dirname, "/assets/images/logo.png"),
-    height: 400, 
-    frame: false, 
-    alwaysOnTop: true, 
-    transparent: true
-  });
+  // Création du Splash Screen.
+  splash = new BrowserWindow({width: 300, icon: path.join(__dirname, "/assets/images/logo.png") ,height: 400, frame: false, alwaysOnTop: true, transparent: true});
   splash.loadFile(path.join(__dirname, 'assets/app/html/splash.html'));
-  console.log("- The Splash sreen has been created");
+  console.log("- Le SplashScreen vient de se contruire.");
   mainWindow.once('ready-to-show', () => {
    setTimeout(ShowApp, 2900);
   });
@@ -60,39 +54,40 @@ app.on("window-all-closed", function () {
   if(process.platform !== "darwin") app.quit();
 });
 
-// Mojang Login with Identifiers.
+// Login Mojang avec les Identifiants.
 ipcMain.on('LoginMojang',(evt, data) => {
   Authenticator.getAuth(data.user, data.pass)
   .then((user) => {
     mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', user);
-      console.log('\n Pseudo - ' + user.name + "\n")
-      mainWindow.webContents.send('MojangTokens')
+      console.log('\n [Pseudo] - ' + user.name + "\n")
+      mainWindow.webContents.send('mojangTokens')
     });
   }).catch(() => { 
     evt.sender.send('err', 'Mauvais identifiants');
   });
 });
-// Login Mojang with tokens.
+// Login Mojang avec les tokens de connexions.
 ipcMain.on('LoginMojangToken', (evt, data) => {
   Authenticator.getAuth(data.access_token, data.client_token)
   .then((user) => {
     mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', user);
-      console.log('\n Pseudo - ' + user.name + "\n");
+      console.log('\n [Pseudo] - ' + user.name + "\n");
     });
   }).catch(() => { 
     evt.sender.send('err', 'Tokens expirés');
   });
 });
-// Login with Microsoft account.
+// Login Microsoft.
 ipcMain.on('LoginMicrosoft', (evt, data) => {
     msmc.setFetch(fetch);
     msmc.fastLaunch("electron", (update) => {
       console.log(update);
     }).then(call => {
       if(msmc.errorCheck(call)) {
-        evt.sender.send("err", "Erreur lors de la connexion") 
+        evt.sender.send("err", "Erreur lors de la connexion");
+        console.error(call.reason);
         return;
       };
       console.log(call)
@@ -101,15 +96,14 @@ ipcMain.on('LoginMicrosoft', (evt, data) => {
       mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', profile);
       mainWindow.webContents.send('accessToken', accessToken);
-      console.log('\n Pseudo - ' + profile.name + "\n");
+      console.log('\n [Pseudo] - ' + profile.name + "\n");
     });
   });
 });
-// When the game launch.
+// Quand le jeu se lance.
 ipcMain.on('Play', (evt, data) => {
-  let AppData = app.getPath("appData")
   if(!data.version) {
-    data.version = "1.14.4"; // Default Version.
+    data.version = "1.14.4"; // Version par défaut.
   };
   if(!data.ram) {
     data.ram = "1G";
@@ -132,14 +126,15 @@ ipcMain.on('Play', (evt, data) => {
     },
   };
   Launcher.launch(Options)
-  .catch(() => {
-    evt.sender.send("err", "Erreur lors du lancement")
+  .catch((err) => {
+    evt.sender.send("err", "Erreur lors du lancement");
+    console.error(err);
   });
   evt.sender.send("msg", "Minecraft・Lancement du Jeu en cours.")
-  Launcher.on('debug', (e) => console.log(e))
+  Launcher.on('debug', (e) => console.log(e));
   Launcher.on('data', (e) => console.log(e));
 });
-// Logout.
+// Déconnexion.
 ipcMain.on('logout', (evt, user) => {
   mainWindow.loadFile(path.join(__dirname, 'assets/app/html/login.html'))
     .catch(() => {

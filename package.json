@@ -1,9 +1,9 @@
 {
-  "name": "spectrelauncher",
+  "name": "minecraftlauncher",
   "icon": "assets/images/logo.ico",
-  "productName": "Spectre Launcher",
+  "productName": "Minecraft Launcher",
   "version": "3.1.2",
-  "description": "Launcher Minecraft du Spectre Client.",
+  "description": "Un Launcher Minecraft simple.",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/L-C-B/SpectreLauncher.git"
+    "url": "git+https://github.com/L-C-B/MinecraftLauncher.git"
   },
   "bugs": {
-    "url": "https://github.com/L-C-B/SpectreLauncher/issues"
+    "url": "https://github.com/L-C-B/MinecraftLauncher/issues"
   },
-  "homepage": "https://github.com/L-C-B/SpectreLauncher#readme"
+  "homepage": "https://github.com/L-C-B/MinecraftLauncher#readme"
 }
