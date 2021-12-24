@@ -1,9 +1,9 @@
-// Importation des Modules.
+// Import of Modules.
 const ipc = require("electron").ipcRenderer;
 const custombar = require("custom-electron-titlebar");
 const shell = require("electron").shell;
 
-// Variables Globales.
+// Global Variables.
 let skin = document.getElementById("skin");
 let deco = document.getElementById("deco");
 let playbtn = document.getElementById("play");
@@ -18,7 +18,7 @@ let bar = new custombar.Titlebar({
 });
 document.querySelectorAll(".window-maximize")[0].parentElement.remove()
 
-// Lorsque l'utilisateur clique sur le bouton de Déconnexion.
+// When the user clicks on the Logout button.
 deco.addEventListener("click", () => {
   localStorage.removeItem("user");
   localStorage.removeItem("accessToken");
@@ -32,7 +32,7 @@ settings.addEventListener("click", () => {
 ipc.on("accessToken",(evt, data) => {
   localStorage.setItem("accessToken", JSON.stringify(data));
 });
-// Quand l'utilisateur s'est connecté.
+// When the user has logged in.
 ipc.on("user",(evt, user) => {
   localStorage.setItem("user", JSON.stringify(user));
   skin.src = `https://minotar.net/avatar/${user.name}/100.png`;
@@ -62,7 +62,7 @@ settings.onclick = function() {
 }
 save.onclick = function() {
   modal.style.display = "none";
-}
+};
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
