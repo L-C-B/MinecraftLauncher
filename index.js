@@ -17,7 +17,7 @@ function ShowApp() {
 };
 function createWindow() {
   mainWindow = new BrowserWindow({
-    title: "Spectre Launcher",
+    title: "Minecraft Launcher",
     icon: path.join(__dirname, "/assets/images/logo.png"),
     width: 980,
     maxWidth: 980,
@@ -110,7 +110,7 @@ ipcMain.on('Play', (evt, data) => {
   let Options = {
     clientPackage: null,
     authorization: msmc.getMCLC().getAuth(data.user) || Authenticator.refreshAuth(data.user.access_token, data.user.client_token), // Microsoft & Mojang
-    root: `${AppData}/.spectrelauncher/`,
+    root: `${AppData}/.minecraftlauncher/`,
     version: {
       number: data.version,
       type: "release"
