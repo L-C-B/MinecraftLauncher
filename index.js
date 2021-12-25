@@ -34,12 +34,12 @@ function createWindow() {
     },
   });
   mainWindow.loadFile(path.join(__dirname, "assets/app/html/login.html")).then(() => {
-    console.log("- La mainWindow vient de se contruire.");
+    console.log("> La mainWindow vient de se contruire.");
   });
   // Création du Splash Screen.
   splash = new BrowserWindow({width: 300, icon: path.join(__dirname, "/assets/images/logo.png") ,height: 400, frame: false, alwaysOnTop: true, transparent: true});
   splash.loadFile(path.join(__dirname, 'assets/app/html/splash.html'));
-  console.log("- Le SplashScreen vient de se contruire.");
+  console.log("> Le SplashScreen vient de se contruire.");
   mainWindow.once('ready-to-show', () => {
    setTimeout(ShowApp, 2900);
   });
@@ -55,12 +55,12 @@ app.on("window-all-closed", function () {
 });
 
 // Login Mojang avec les Identifiants.
-ipcMain.on('LoginMojang',(evt, data) => {
-  Authenticator.getAuth(data.user, data.pass)
+ipcMain.on('LoginMojang',(evt, login) => {
+  Authenticator.getAuth(login.user, login.pass)
   .then((user) => {
     mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', user);
-      console.log('\n [Pseudo] - ' + user.name + "\n")
+      console.log('\n > Pseudo - ' + user.name + "\n")
       mainWindow.webContents.send('mojangTokens')
     });
   }).catch(() => { 
@@ -73,7 +73,7 @@ ipcMain.on('LoginMojangToken', (evt, data) => {
   .then((user) => {
     mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', user);
-      console.log('\n [Pseudo] - ' + user.name + "\n");
+      console.log('\n > Pseudo - ' + user.name + "\n");
     });
   }).catch(() => { 
     evt.sender.send('err', 'Tokens expirés');
@@ -96,7 +96,7 @@ ipcMain.on('LoginMicrosoft', (evt, data) => {
       mainWindow.loadFile(path.join(__dirname, 'assets/app/html/app.html')).then(() => {
       mainWindow.webContents.send('user', profile);
       mainWindow.webContents.send('accessToken', accessToken);
-      console.log('\n [Pseudo] - ' + profile.name + "\n");
+      console.log('\n > Pseudo - ' + profile.name + "\n");
     });
   });
 });
@@ -138,6 +138,7 @@ ipcMain.on('Play', (evt, data) => {
 ipcMain.on('logout', (evt, user) => {
   mainWindow.loadFile(path.join(__dirname, 'assets/app/html/login.html'))
     .catch(() => {
+      console.log()
       evt.sender.send('err', 'Erreur lors de la déconnexion');
     });
   });

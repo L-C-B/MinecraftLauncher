@@ -53,7 +53,7 @@ ipc.on("err", (event, errorMessage) => {
     }, 1200);
     LoginMojang.disabled = false;
   });
-  if(localStorage.getItem('mojangTokens')) {
+  if(localStorage.getItem('tokens')) { // En Développement.
     // Login Mojang avec les tokens.
     ipc.send('LoginMojangToken', JSON.parse(localStorage.getItem('user')));
   };

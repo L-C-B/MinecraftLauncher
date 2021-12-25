@@ -8,17 +8,9 @@ body {
   animation-timing-function: ease-in;
   animation-duration: 0.5s;
 }
-@keyframes fadeInOpacity {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
-}
 .main-box {
   position: relative;
-  left: 246px;
+  left: 245px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   width: 312px;
@@ -33,7 +25,7 @@ body {
   height: 95px;
   padding: 40px;
   position: absolute;
-  top: 140px; right: -170px;
+  top: 140px; left: 770px;
   transform: translate(-50%,-50%);
   text-align: center;
   border-radius: 20px;
@@ -297,5 +289,13 @@ select#version {
   }
   to {
     transform: rotate(1turn);
+  }
+}
+@keyframes fadeInOpacity {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
   }
 }
