@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/login.css" /> 
-    <link rel="stylesheet" href="../css/toast.css" />
-    <script src="../scripts/toast.js"></script>
-  </head>
-    <body>
-      <form>
-        <div class="login-box">
-          <div class="textbox">
-            <i class="fas fa-user"></i>
-            <input type="text" id= "pseudo"placeholder="E-Mail">
-          </div>
-          <div class="textbox">
-            <i class="fas fa-lock"></i>
-            <input type="password" id= "mdp"placeholder="Mot de passe">
-          </div>
-        </form>
-        <button type="button" class= "button" id="LoginMojang"><span class="buttonText">Connexion</span></button>
-        <button type="button" class="button" id="LoginMicrosoft">
-          <img src="../../images/microsoft.png" id="microsoft" height="20" width="20">
-        </img>
-      </button>
-      <script src="../js/login.js"></script>
-      
-    </body>
-  </html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/login.css" /> 
+	<link rel="stylesheet" href="../css/toast.css" />
+	<script src="../scripts/toast.js"></script>
+</head>
+<body>
+	<div class="login-box">
+		<div class="login-info">
+			<p>Bonjour ^^, suite à la migration des comptes Mojang vers les comptes Microsoft, les comptes Mojang sont donc inutilisable, je vous invite donc à vous connecter via votre compte Microsoft</p>
+			<button onclick="loginMS(this)" id="IIiiii">
+				Connectez-vous <img style="vertical-align: middle; margin-left: 5px;" src="../../images/microsoft.png" id="microsoft" height="20" width="20">
+			</button>
+		</div>
+	</div>
+	<script src="../js/login.js"></script>
+</body>
+</html>

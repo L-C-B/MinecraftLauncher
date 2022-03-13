@@ -36,6 +36,9 @@ function createWindow() {
   mainWindow.loadFile(path.join(__dirname, "assets/app/html/login.html")).then(() => {
     console.log("> La mainWindow vient de se contruire.");
   });
+  /* For open dev tools (bobsonic)
+  mainWindow.webContents.openDevTools()  
+  */
   // Création du Splash Screen.
   splash = new BrowserWindow({width: 300, icon: path.join(__dirname, "/assets/images/logo.png") ,height: 400, frame: false, alwaysOnTop: true, transparent: true});
   splash.loadFile(path.join(__dirname, 'assets/app/html/splash.html'));

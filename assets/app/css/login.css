@@ -101,6 +101,38 @@ body{
   border-radius: 50%;
   animation: button-loading-spinner 1s ease infinite;
 }
+
+.buttonLoading {
+    color: #faa81a !important;
+}
+
+.buttonLoading > * {
+  display: none;
+}
+
+.login-info {
+  margin-top: -20px;
+  border-left: 5px solid #faa81a;
+  width: 300px;
+  height: 150px;
+  padding: 0px 17px;
+}
+
+.login-info > button {
+  background: #faa81a;
+  color: #FFFFFF;
+  border: 0;
+  outline: 0;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  width: 175px;
+  height: 40px;
+  font-size: 16px;
+}
+
 @keyframes button-loading-spinner {
   from {
     transform: rotate(0turn);

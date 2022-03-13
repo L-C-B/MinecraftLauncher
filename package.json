@@ -6,7 +6,7 @@
   "description": "Un Launcher Minecraft simple.",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electronmon .",
     "buildW": "electron-builder build -w",
     "buildM": "electron-builder build -m",
     "buildL": "electron-builder build -l"
@@ -15,7 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^10.4.7",
-    "electron-builder": "^22.7.0"
+    "electron-builder": "^22.7.0",
+    "electronmon": "^2.0.2"
   },
   "dependencies": {
     "custom-electron-titlebar": "^3.2.6",
